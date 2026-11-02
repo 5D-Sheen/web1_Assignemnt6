@@ -1,0 +1,209 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f3efe6;
+  margin: 0;
+  padding: 12px;
+  text-align: center;
+}
+
+h1 {
+  color: #000000;
+  font-size: 22px;
+  margin: 6px 0 10px;
+}
+
+/* ---------- house ---------- */
+#roof {
+  max-width: 960px;
+  height: 60px;
+  margin: 0 auto;
+  background: #043543;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);   /* triangle */
+}
+
+#house {
+  max-width: 960px;
+  margin: 0 auto 12px;
+  border: 5px solid #043543;
+  background: #fff;
+}
+
+.floor {
+  display: flex;
+  border-bottom: 5px solid #103e76;
+}
+.floor:last-child { border-bottom: none; }
+
+.floor-label {
+  width: 24px;
+  background: #07cbcedc;
+  color: #033f40;
+  font-weight: bold;
+  font-size: 13px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  padding: 4px;
+}
+
+.rooms {
+  display: flex;
+  flex: 1;
+}
+
+.room {
+  flex: 1;
+  padding: 6px;
+  border-right: 4px solid #103e76;
+  text-align: left;
+}
+.room:last-child { border-right: none; }
+
+.room-name {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: #4a3426;
+}
+
+/* room colors */
+#balcony { background: #d6d9dc; }
+#hall    { background: #f3e8c9; }
+#kitchen { background: #f7d5ef; }
+#living  { background: #c5f9fd; }
+
+.guests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;                /* the JS move uses this number (6) */
+}
+
+/* ---------- guest card ---------- */
+.guest {
+  position: relative;      /* needed for animate() jump */
+  width: 56px;
+  text-align: center;
+  font-size: 11px;
+  padding: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid gray;
+  background: #fff;
+}
+
+/* ring color = clothing color class */
+.guest.red    .avatar { border-color: #d93a3a; }
+.guest.blue   .avatar { border-color: #2f6fd0; }
+.guest.green  .avatar { border-color: #2e9e5b; }
+.guest.black  .avatar { border-color: #222; }
+.guest.yellow .avatar { border-color: #e8a800; }
+.guest.purple .avatar { border-color: #8a4fc7; }
+
+.badge {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  border-radius: 50%;
+  background: #1f4f9a;
+  color: #fff;
+  font-size: 9px;
+}
+.guest.aitu .badge { display: block; }
+
+.name { font-weight: bold; }
+.time { color: #666; }
+.things { min-height: 16px; font-size: 10px; }
+
+/* ---------- highlight ---------- */
+#house .found-room {
+  background: #f7ff81;
+  outline: 4px solid #f0a500;
+  outline-offset: -4px;
+}
+
+.found {
+  background: #ffe066;
+  box-shadow: 0 0 8px 2px #f0a500;
+}
+
+/* ---------- buttons and result ---------- */
+#result {
+  max-width: 960px;
+  margin: 0 auto 10px;
+  padding: 8px;
+  background: #fff;
+  border: 2px solid #012b2b;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+#buttons {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+button {
+  padding: 6px 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #02392e;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover { background: #269466; }
+
+
+/* =========== TASK 2 additions =========== */
+
+/* sort button inside each room (JS adds it) */
+.sort-btn {
+  float: right;
+  padding: 3px 8px;
+  font-size: 11px;
+}
+
+/* guest info card: hidden until JS opens it */
+#guest-card {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  width: 230px;            /* the JS uses this number (230) */
+  padding: 12px;           /* and this one (12) */
+  background: #fff;
+  border: 3px solid #043543;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  text-align: left;
+  font-size: 14px;
+  overflow: hidden;
+}
+#guest-card h3 { margin: 0 0 8px; color: #043543; }
+#card-info { margin: 0 0 10px; padding-left: 18px; }
+#card-moves button {
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+/* clone that flies to another room (JS makes it) */
+.flying {
+  position: absolute;
+  z-index: 200;
+  margin: 0;
+}
+
+#clear-btn { background: #b3392f; }
+#clear-btn:hover { background: #d9534a; }
